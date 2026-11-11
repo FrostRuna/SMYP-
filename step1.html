@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>베드로의 고백 — 1단계: 베드로의 생애 카드뉴스</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts: Pretendard & Noto Serif KR -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            deep: '#070b12',
+            cardBg: '#0f172a',
+            navy: {
+              800: '#131e33',
+              900: '#0c1322',
+              950: '#060a12'
+            },
+            gold: {
+              300: '#fae4a8',
+              400: '#e5be64',
+              500: '#cba135',
+              600: '#a67f1e',
+              glow: 'rgba(229, 190, 100, 0.15)'
+            },
+            accent: '#38bdf8'
+          },
+          fontFamily: {
+            sans: ['Pretendard', 'sans-serif'],
+            serif: ['"Noto Serif KR"', 'serif'],
+            cinzel: ['Cinzel', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Card News aspect ratio: 4:5 on desktop, adaptive on small mobile */
+    .card-frame {
+      aspect-ratio: 4 / 5;
+      max-height: 84vh;
+    }
+    @media (max-height: 750px) {
+      .card-frame {
+        aspect-ratio: auto;
+        min-height: 600px;
+      }
+    }
+    
+    /* Custom Scrollbar */
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(229, 190, 100, 0.25);
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: rgba(229, 190, 100, 0.5);
+    }
+
+    /* Subdued water-shimmer background */
+    .sea-gradient {
+      background: radial-gradient(circle at 50% 15%, #182844 0%, #0c1424 50%, #060911 100%);
+    }
+
+    /* Scripture card glow */
+    .scripture-card {
+      background: linear-gradient(165deg, rgba(20, 31, 52, 0.95) 0%, rgba(11, 18, 30, 0.98) 100%);
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6), 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Golden quotation marks */
+    .quote-badge {
+      font-family: "Noto Serif KR", serif;
+      background: linear-gradient(135deg, #fae4a8, #cba135);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-deep text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-deep overflow-x-hidden">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="w-full bg-navy-950/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-40 px-4 py-2.5 transition-all">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <!-- Title & Series -->
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-gold-600 to-gold-400 p-[1px] flex items-center justify-center shadow-lg shadow-gold-500/10">
+          <div class="w-full h-full bg-navy-900 rounded-[7px] flex items-center justify-center text-gold-300 font-cinzel text-xs font-bold">
+            01
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-[10px] uppercase tracking-widest text-gold-400 font-semibold">청소년부 찬양팀 묵상</span>
+            <span class="text-white/30 text-[10px]">•</span>
+            <span class="text-[10px] text-slate-400 font-medium">STEP 1</span>
+          </div>
+          <h1 class="text-xs sm:text-sm font-bold text-white tracking-tight">베드로의 생애 : 거친 어부에서 반석으로</h1>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-1.5 sm:space-x-2">
+        <!-- View All Grid Toggle -->
+        <button id="gridToggleBtn" class="px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-slate-300 hover:text-white flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span class="hidden sm:inline">모아보기</span>
+        </button>
+
+        <!-- Copy Current Card Text -->
+        <button id="copyCardBtn" title="단톡방 공유용 텍스트 복사" class="px-2.5 py-1.5 rounded-lg bg-gold-500/20 hover:bg-gold-500/30 border border-gold-500/40 text-xs font-semibold text-gold-300 hover:text-white flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          <span class="hidden sm:inline">카드 복사</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN SLIDER VIEW ================= -->
+  <main id="sliderView" class="flex-1 flex flex-col items-center justify-center px-3 sm:px-4 py-3 sm:py-6 relative max-w-4xl mx-auto w-full">
+    
+    <!-- Top Progress Indicator -->
+    <div class="w-full max-w-md sm:max-w-lg mb-2.5 flex items-center justify-between text-xs text-slate-400 px-1">
+      <div class="flex items-center space-x-2">
+        <span id="badgeCategory" class="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-gold-500/20 text-gold-300 border border-gold-500/30">
+          COVER
+        </span>
+        <span id="cardIndicator" class="font-cinzel text-xs text-slate-300 tracking-wider">01 / 13</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button id="fontMinus" class="w-6 h-6 rounded bg-white/5 hover:bg-white/10 text-[11px] font-mono text-slate-300 flex items-center justify-center transition" title="글자 작게">A-</button>
+        <button id="fontPlus" class="w-6 h-6 rounded bg-white/5 hover:bg-white/10 text-[11px] font-mono text-slate-300 flex items-center justify-center transition" title="글자 크게">A+</button>
+      </div>
+    </div>
+
+    <!-- Card Wrapper & Aspect Ratio (Instagram 4:5 optimized) -->
+    <div class="relative w-full max-w-md sm:max-w-lg card-frame rounded-2xl sm:rounded-3xl border border-white/10 p-[1px] bg-gradient-to-b from-white/15 via-white/5 to-gold-500/20 shadow-2xl shadow-black/80 overflow-hidden flex flex-col">
+      
+      <!-- Inside Card Container -->
+      <div id="cardContentContainer" class="w-full h-full rounded-[23px] sm:rounded-[31px] sea-gradient flex flex-col justify-between p-5 sm:p-7 relative overflow-hidden text-left transition-all duration-300">
+        <!-- Content will be injected dynamically -->
+      </div>
+
+      <!-- Navigation Overlay Arrows (Desktop & Tablet) -->
+      <button id="prevBtn" aria-label="이전 카드" class="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/15 text-white/80 hover:text-white flex items-center justify-center transition transform active:scale-90 hover:scale-105 z-20">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button id="nextBtn" aria-label="다음 카드" class="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md border border-white/15 text-white/80 hover:text-white flex items-center justify-center transition transform active:scale-90 hover:scale-105 z-20">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Dots & Mobile Nav Hint -->
+    <div class="mt-4 flex flex-col items-center space-y-2">
+      <!-- Dots -->
+      <div id="dotsContainer" class="flex items-center space-x-1.5 overflow-x-auto py-1 max-w-full px-2">
+        <!-- Injected dots -->
+      </div>
+      <div class="flex items-center gap-3 text-[11px] text-slate-500">
+        <span class="flex items-center gap-1">
+          <kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px]">←</kbd>
+          <kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px]">→</kbd>
+          키보드 화살표 이동
+        </span>
+        <span>•</span>
+        <span>좌우로 스와이프 가능</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= GRID VIEW MODAL ================= -->
+  <section id="gridView" class="hidden flex-1 max-w-5xl mx-auto w-full px-4 py-6">
+    <div class="flex items-center justify-between mb-5 border-b border-white/10 pb-3">
+      <div>
+        <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-gold-400 inline-block"></span>
+          1단계 전체 카드 모아보기 (총 13장)
+        </h2>
+        <p class="text-xs text-slate-400 mt-0.5">카드를 터치하면 해당 묵상 카드로 즉시 이동합니다.</p>
+      </div>
+      <button id="closeGridBtn" class="px-3 py-1.5 rounded-lg bg-gold-500/20 hover:bg-gold-500/30 text-gold-300 text-xs font-semibold border border-gold-500/30 transition flex items-center gap-1">
+        슬라이드로 보기
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="gridCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pb-12">
+      <!-- Generated via JS -->
+    </div>
+  </section>
+
+  <!-- ================= FOOTER / TOAST ================= -->
+  <footer class="w-full bg-navy-950/60 border-t border-white/5 py-3 px-4 text-center text-[11px] text-slate-500">
+    <p>청소년부 찬양팀 묵상 가이드 • 표준새번역 성경 본문 수록 • 찬양 곡: 「베드로의 고백」</p>
+  </footer>
+
+  <!-- Toast Message Box -->
+  <div id="toastBox" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-navy-900/95 border border-gold-500/50 text-gold-200 px-4 py-2.5 rounded-xl shadow-2xl text-xs font-medium flex items-center gap-2.5 opacity-0 pointer-events-none transition-all duration-300 transform translate-y-3">
+    <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+    </svg>
+    <span id="toastMsg">텍스트가 클립보드에 복사되었습니다!</span>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC & CONTENT ================= -->
+  <script>
+    // --- 13 Cards Complete Dataset ---
+    const cardsData = [
+      {
+        id: 0,
+        type: "COVER",
+        badge: "COVER",
+        category: "표지",
+        mainTitle: "열정 100%, 실수 100%",
+        subTitle: "우리를 닮은 제자, 베드로의 생애",
+        description: "완벽해서 쓰임받은 사람이 아니라, 넘어지면서도 주님을 끝까지 따랐던 거친 어부의 이야기",
+        series: "베드로의 고백 묵상 시리즈 01",
+        target: "청소년부 찬양팀을 위한 묵상 가이드",
+        bgIcon: "boat"
+      },
+      {
+        id: 1,
+        type: "GUIDE",
+        badge: "GUIDE 01",
+        category: "가이드 1",
+        guideNumber: "01",
+        title: "실패한 새벽, 인생의 밑바닥에서 만난 주님",
+        headCopy: "“밤새 애썼지만, 그물은 비어 있었습니다”",
+        content: `갈릴리 호수의 어부 시몬(베드로)은 대단한 신앙인도, 성경 학자도 아니었습니다. 하루하루 치열하게 그물을 던지며 살아가던 평범하고 거친 어부였습니다.\n\n어느 날 새벽, 밤새 온 힘을 다해 그물질을 했지만 단 한 마리의 물고기도 잡지 못했습니다. 피로와 허탈감 속에서 묵묵히 빈 그물을 씻고 있던 바로 그 자리에, 예수님이 찾아오셨습니다.\n\n"깊은 데로 가서 그물을 던져라."\n내 지식과 경험으로는 도저히 납득할 수 없는 명령이었지만, 베드로는 순종했습니다. 그리고 배가 가라앉을 만큼의 놀라운 기적을 마주하게 됩니다.`,
+        point: "주님은 우리가 대단한 성공을 거두었을 때가 아니라, 아무것도 남지 않은 빈 그물을 씻고 있는 그 무력한 순간에 찾아오십니다.",
+        bgIcon: "net"
+      },
+      {
+        id: 2,
+        type: "SCRIPTURE",
+        badge: "SCRIPTURE 01",
+        category: "말씀 1",
+        passage: "누가복음 5장 4절~8절 (표준새번역)",
+        theme: "깊은 데로 가서 그물을 던져라",
+        verses: [
+          { text: "예수께서 말씀을 마치시고, 시몬에게 말씀하셨다." },
+          { text: "“깊은 데로 저어 나가서, 그물을 내려 고기를 잡아라.”", highlight: true, speaker: "예수님" },
+          { text: "시몬이 대답하였다. “선생님, 우리가 밤새도록 애를 썼으나, 아무것도 잡지 못했습니다. 그러나 선생님의 말씀에 따라 그물을 내리겠습니다.”" },
+          { text: "그들이 그렇게 하니, 많은 고기 떼가 걸려들어서 그물이 찢어질 지경이 되었다. 그래서 그들은 다른 배에 있는 동료들에게 손짓하여 와서 도와 달라고 하였다. 그들이 와서, 고기를 두 배에 가득 채우니, 배가 가라앉을 지경이 되었다." },
+          { text: "시몬 베드로가 이것을 보고 예수의 무릎 앞에 엎드려 말하였다. “주님, 나에게서 떠나 주십시오. 나는 죄인입니다.”", highlight: true }
+        ]
+      },
+      {
+        id: 3,
+        type: "GUIDE",
+        badge: "GUIDE 02",
+        category: "가이드 2",
+        guideNumber: "02",
+        title: "배와 그물을 버려두고 — 첫사랑의 결단",
+        headCopy: "“기적을 붙잡지 않고, 주님의 발 앞에 엎드렸습니다”",
+        content: `평생 만져본 적 없는 엄청난 물고기 떼를 잡았을 때, 보통 사람이라면 환호성을 지르며 물고기 값을 계산했을 것입니다.\n\n하지만 베드로의 반응은 전혀 달랐습니다. 그는 잡힌 물고기를 보지 않고 예수님의 무릎 아래 엎드려 울부짖었습니다.\n"주님, 나를 떠나십시오. 나는 죄인입니다."\n\n거룩하신 하나님 아들 앞에 섰을 때, 감추어졌던 자신의 초라함과 죄인 됨이 뼈저리게 깨달아졌기 때문입니다.\n예수님은 그런 베드로에게 새로운 사명을 주셨습니다. "이제 너는 사람을 낚을 것이다." 베드로는 잡은 물고기와 배, 평생 삶의 기반이었던 그물을 버려두고 주님을 따랐습니다.`,
+        point: "찬양팀의 섬김은 내 실력이나 재능을 뽐내는 자리가 아닙니다. 거룩하신 주님 앞에 '나는 죄인입니다' 엎드리는 겸손에서 참된 예배가 시작됩니다.",
+        bgIcon: "cross"
+      },
+      {
+        id: 4,
+        type: "SCRIPTURE",
+        badge: "SCRIPTURE 02",
+        category: "말씀 2",
+        passage: "누가복음 5:10b~11 / 마태복음 4:18~20 (표준새번역)",
+        theme: "사람을 낚는 어부로의 부르심",
+        verses: [
+          { text: "예수께서 시몬에게 말씀하셨다.", speaker: "누가복음 5장" },
+          { text: "“두려워하지 마라. 이제부터 너는 사람을 낚을 것이다.”", highlight: true, speaker: "예수님" },
+          { text: "그들은 배들을 육지에 댄 뒤에, 모든 것을 버려두고 예수를 따라갔다." },
+          { text: "예수께서 갈릴리 바닷가를 걸어가시다가, 두 형제, 곧 베드로라는 시몬과 그와 동생 안드레가 그물 던지는 것을 보셨다. 그들은 어부였다.", speaker: "마태복음 4장" },
+          { text: "예수께서 그들에게 말씀하셨다. “나를 따라오너라. 내가 너희를 사람 낚는 어부가 되게 하겠다.” 그들은 곧 그물을 버려두고 예수를 따라갔다.", highlight: true }
+        ]
+      },
+      {
+        id: 5,
+        type: "GUIDE",
+        badge: "GUIDE 03",
+        category: "가이드 3",
+        guideNumber: "03",
+        title: "물 위를 걷는 믿음, 바람을 보고 빠져든 의심",
+        headCopy: "“물 위를 걸었던 유일한 사람, 그러나 시선을 빼앗긴 순간”",
+        content: `풍랑이 사납게 일렁이는 캄캄한 밤바다 위로 예수님이 걸어오셨습니다. 다른 열한 제자가 두려움에 떨며 배 밑바닥에 웅크리고 있을 때, 오직 베드로만이 외쳤습니다.\n"주님, 주님이시거든 나더러 물 위로 오라 하소서!"\n\n그는 실제로 흔들리는 배 밖으로 발을 내딛고 물 위를 걸었습니다. 엄청난 믿음과 순종이었습니다.\n\n그러나 거센 바람과 몰아치는 파도를 바라보는 순간, 무서움에 사로잡혀 물속으로 깊이 빠져들기 시작했습니다.\n주님을 바라볼 땐 기적의 파도를 딛고 서지만, 거친 현실의 환경을 보는 순간 우리는 여지없이 가라앉습니다. 그때 베드로가 내지른 외마디 비명은 바로 우리의 기도여야 합니다.\n"주님, 살려 주십시오!"`,
+        point: "찬양대 위에 서서 회중의 반응, 나의 실수, 주변 친구들의 시선(바람)을 보면 두려움에 빠집니다. 오직 예수님께만 시선을 고정해야 파도 위를 걸을 수 있습니다.",
+        bgIcon: "wave"
+      },
+      {
+        id: 6,
+        type: "SCRIPTURE",
+        badge: "SCRIPTURE 03",
+        category: "말씀 3",
+        passage: "마태복음 14장 28절~32절 (표준새번역)",
+        theme: "물 위를 걸어오라, 왜 의심하였느냐",
+        verses: [
+          { text: "베드로가 예수께 말하였다. “주님, 주님이시면, 나더러 물 위로 걸어서 주님께로 오라고 명령하십시오.”" },
+          { text: "예수께서 “오너라” 하고 말씀하셨다. 베드로는 배에서 내려, 물 위로 걸어서 예수께로 갔다.", highlight: true },
+          { text: "그러나 거센 바람이 불어오는 것을 보고 무서움에 사로잡혀서, 물에 빠져 들어가며 소리 질렀다." },
+          { text: "“주님, 살려 주십시오!”", highlight: true, speaker: "베드로의 외침" },
+          { text: "예수께서 곧 손을 내밀어 그를 붙잡으시고 말씀하셨다. “믿음이 적은 사람아, 왜 의심하였느냐?” 그리고 그들이 함께 배에 오르니, 바람이 그쳤다." }
+        ]
+      },
+      {
+        id: 7,
+        type: "GUIDE",
+        badge: "GUIDE 04",
+        category: "가이드 4",
+        guideNumber: "04",
+        title: "인생 최고의 고백, 인생 최악의 책망",
+        headCopy: "“반석(베드로)이라 칭찬받던 입술이 걸림돌이 되다”",
+        content: `"너희는 나를 누구라 하느냐?"\n예수님의 물음에 베드로는 역사상 가장 위대한 신앙고백을 터뜨립니다.\n"선생님은 살아 계신 하나님의 아들 그리스도이십니다!"\n예수님은 몹시 기뻐하시며 그에게 '반석(베드로)'이라는 이름을 주시고 이 반석 위에 내 교회를 세우겠다고 선언하셨습니다.\n\n그러나 불과 몇 분 뒤, 예수님이 십자가에서 고난을 받고 죽임을 당해야 함을 말씀하시자 베드로는 주님을 붙잡고 다그쳤습니다.\n"주님, 안 됩니다! 절대로 이런 일이 일어나선 안 됩니다!"\n\n이에 주님의 호된 책망이 떨어집니다.\n"사탄아, 내 뒤로 물러가라! 너는 하나님의 일을 생각하지 않고 사람의 일만 생각하는구나."\n내 열정과 생각이 하나님의 뜻보다 앞설 때, 우리는 가장 든든한 반석에서 가장 위험한 걸림돌로 전락합니다.`,
+        point: "은혜로운 찬양을 드린 직후에도 내 자아와 인정 욕구가 불쑥 튀어나올 수 있습니다. 나의 열심이 하나님의 구원 계획을 가로막고 있지 않은지 점검해야 합니다.",
+        bgIcon: "rock"
+      },
+      {
+        id: 8,
+        type: "SCRIPTURE",
+        badge: "SCRIPTURE 04",
+        category: "말씀 4",
+        passage: "마태복음 16장 15~18절, 21~23절 (표준새번역)",
+        theme: "주는 그리스도시요 / 사탄아 물러가라",
+        verses: [
+          { text: "예수께서 그들에게 물으셨다. “그러면 너희는 나를 누구라고 하느냐?”" },
+          { text: "시몬 베드로가 대답하였다. “선생님은 살아 계신 하나님의 아들 그리스도이십니다.”", highlight: true },
+          { text: "예수께서 말씀하셨다. “너는 베드로(바위)다. 나는 이 반석 위에다가 내 교회를 세우겠다.”" },
+          { text: "이때부터 예수께서 자기가 고난을 받고 죽임을 당해야 함을 밝히셨다. 이에 베드로가 예수를 바싹 잡아당기고 “주님, 안 됩니다! 절대로 이런 일이 주님께 일어나서는 안 됩니다” 하고 다그쳤다." },
+          { text: "예수께서 돌아서서 베드로에게 말씀하셨다. “사탄아, 내 뒤로 물러가라! 너는 나에게 걸림돌이다. 너는 하나님의 일을 생각하지 않고 사람의 일만 생각하는구나.”", highlight: true, speaker: "주님의 책망" }
+        ]
+      },
+      {
+        id: 9,
+        type: "GUIDE",
+        badge: "GUIDE 05",
+        category: "가이드 5",
+        guideNumber: "05",
+        title: "다 버려도 나는 안 버립니다 — 무너진 인간의 열심",
+        headCopy: "“내 힘과 각오로 드린 맹세는 반드시 무너집니다”",
+        content: `십자가를 앞둔 마지막 만찬 자리, 예수님이 제자들의 배신을 예고하셨습니다. 베드로는 목에 핏대를 세우며 큰소리쳤습니다.\n"모두가 주님을 버릴지라도, 저는 죽는 한이 있어도 절대 주님을 버리지 않겠습니다!"\n\n이 말은 결코 거짓말이 아니었습니다. 베드로는 진심이었고, 자기 확신으로 충만했습니다.\n실제로 겟세마네 동산에 군사들이 들이닥쳤을 때도, 그는 망설임 없이 칼을 뽑아 대제사장의 종의 귀를 잘라버렸습니다. 그러나 예수님은 "칼을 칼집에 꽂아라" 명하셨습니다.\n\n우리의 혈기와 의지, 인간적인 용기로 싸우는 싸움은 결코 하나님의 나라를 이룰 수 없습니다. '내 열정'으로 버티던 베드로의 신앙은, 몇 시간 뒤 닥쳐올 두려움 앞에서 모래성처럼 허물어집니다.`,
+        point: "'나는 절대 흔들리지 않아'라는 자기 확신은 가장 위험합니다. 내 결심이 나를 지켜주는 것이 아니라, 오직 예수님의 긍휼만이 나를 끝까지 붙들어 줍니다.",
+        bgIcon: "sword"
+      },
+      {
+        id: 10,
+        type: "SCRIPTURE",
+        badge: "SCRIPTURE 05",
+        category: "말씀 5",
+        passage: "마태복음 26:31~35 / 요한복음 18:10~11 (표준새번역)",
+        theme: "절대로 버리지 않겠습니다 / 칼을 칼집에 꽂아라",
+        verses: [
+          { text: "예수께서 말씀하셨다. “오늘 밤에 너희는 모두 나를 버릴 것이다.” 베드로가 예수께 말하였다.", speaker: "마태복음 26장" },
+          { text: "“모두가 주님을 버릴지라도, 나는 절대로 버리지 않겠습니다. 내가 주님과 함께 죽는 한이 있을지라도, 절대로 주님을 모른다고 하지 않겠습니다.”", highlight: true },
+          { text: "시몬 베드로가 칼을 가지고 있었는데, 그는 그것을 빼어 대제사장의 종을 쳐서, 오른쪽 귀를 잘라 버렸다.", speaker: "요한복음 18장" },
+          { text: "그 때에 예수께서 베드로에게 말씀하셨다. “그 칼을 칼집에 꽂아라. 아버지께서 나에게 주신 이 잔을, 내가 어찌 마시지 않겠느냐?”", highlight: true, speaker: "예수님" }
+        ]
+      },
+      {
+        id: 11,
+        type: "GUIDE",
+        badge: "GUIDE 06",
+        category: "가이드 6",
+        guideNumber: "06",
+        title: "우리를 닮은 베드로, 찬양팀이 서야 할 자리",
+        headCopy: "“흔들리는 갈대였던 시몬을, 반석으로 빚어가시는 은혜”",
+        content: `베드로의 생애는 마치 우리의 연약한 모습을 거울로 비춰보는 것 같습니다.\n\n수련회나 찬양 집회 때는 세상을 다 뒤집을 것처럼 뜨겁게 눈물 흘리며 고백하다가도, 학교와 일상으로 돌아오면 작은 유혹과 친구들의 시선 앞에 맥없이 무너지는 우리.\n열정으로 가득 찼다가도 순식간에 의심의 파도에 빠져 허우적거리는 우리.\n\n하지만 주님은 베드로의 그 지독한 연약함과 앞으로 닥칠 배신의 미래를 다 아시면서도, 처음 만난 날부터 그를 '반석(베드로)'이라고 불러주셨습니다.\n\n찬양팀은 완벽한 의인들이 모인 곳이 아닙니다. 수없이 흔들리고 넘어지지만, 그 실패의 자리에서 다시 건져주시는 주님의 손을 붙잡는 죄인들이 서는 자리입니다.`,
+        point: "오늘 찬양팀으로 서 있는 나의 고백은 어디에 기대어 있나요? 나의 실력과 열정(칼)을 내려놓고, 주님의 은혜를 구하는 무릎으로 찬양의 자리에 나아갑시다.",
+        bgIcon: "hands"
+      },
+      {
+        id: 12,
+        type: "SHARING",
+        badge: "APPLICATION",
+        category: "나눔과 기도",
+        guideNumber: "★",
+        title: "찬양팀 묵상 나눔과 결단의 기도",
+        headCopy: "“너를 위하여 기도하였다… 네가 돌이킨 뒤에는 형제를 굳세게 하여라”",
+        scriptureSnip: "“시몬아, 시몬아, 보아라. 사탄이 밀처럼 너희를 체질하겠다고 요구하였다. 그러나 나는 네 믿음이 꺾이지 않도록 너를 위하여 기도하였다. 네가 돌이킨 뒤에는, 네 형제를 굳세게 하여라.” (눅 22:31-32)\n“모든 은혜의 하나님께서 여러분을 친히 온전하게 하시고, 굳세게 하시고, 강하게 하시고, 기초를 튼튼하게 해주실 것입니다.” (벧전 5:10)",
+        questions: [
+          { q: "1. 나의 시선 점검", desc: "베드로처럼 열정으로 물 위를 걷다가도, 나를 두려움과 무기력에 빠지게 만드는 세상의 '거센 바람(학업 스트레스, 친구 관계, 미래에 대한 불안)'은 무엇인가요?" },
+          { q: "2. 칼 내려놓기", desc: "찬양팀을 섬기며 주님의 뜻보다 내 생각, 내 연주/노래 실력, 내 자존심(혈기)이 앞섰던 순간이 있었다면 정직하게 나누어 봅시다." },
+          { q: "3. 한 줄 결단 기도", desc: "“주님, 물속에 빠져 들어갈 때 '주님 살려주십시오' 외쳤던 베드로처럼, 오늘도 내 힘을 의지하지 않고 건져 올려주시는 주님의 손만 붙잡고 찬양하게 하소서.”" }
+        ],
+        bgIcon: "pray"
+      }
+    ];
+
+    // State
+    let currentIndex = 0;
+    let baseFontSize = 14; // px for body text
+
+    // DOM Elements
+    const container = document.getElementById('cardContentContainer');
+    const badgeCategory = document.getElementById('badgeCategory');
+    const cardIndicator = document.getElementById('cardIndicator');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const gridToggleBtn = document.getElementById('gridToggleBtn');
+    const closeGridBtn = document.getElementById('closeGridBtn');
+    const sliderView = document.getElementById('sliderView');
+    const gridView = document.getElementById('gridView');
+    const gridCardsContainer = document.getElementById('gridCardsContainer');
+    const copyCardBtn = document.getElementById('copyCardBtn');
+    const toastBox = document.getElementById('toastBox');
+    const toastMsg = document.getElementById('toastMsg');
+    const fontPlus = document.getElementById('fontPlus');
+    const fontMinus = document.getElementById('fontMinus');
+
+    // SVG Icons
+    const ICONS = {
+      boat: `<svg class="w-24 h-24 text-gold-500/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.62c.12-.42-.03-.88-.38-1.15-.35-.28-.83-.32-1.22-.11L19 12.2V4c0-.55-.45-1-1-1s-1 .45-1 1v7.09l-3.34-1.67c-.42-.21-.92-.15-1.28.14L10 11.2V2c0-.55-.45-1-1-1s-1 .45-1 1v8.52L5.66 9.12c-.39-.21-.87-.17-1.22.11-.35.27-.5.73-.38 1.15L5.95 17z"/></svg>`,
+      net: `<svg class="w-24 h-24 text-cyan-500/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h2v4h-2V5zm0 6h2v4h-2v-4zm-4-6h2v4H8V5zm0 6h2v4H8v-4zm-3-6h1v4H5V5zm0 6h1v4H5v-4zm14 8h-1v-4h1v4zm0-6h-1V5h1v4zm-3 6h-2v-4h2v4zm-6 0h-2v-4h2v4zm0 2v2H8v-2h2zm4 0v2h-2v-2h2zm4 0v2h-2v-2h2zM5 19v-2h1v2H5zm14 0h-1v-2h1v2z"/></svg>`,
+      cross: `<svg class="w-24 h-24 text-gold-500/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M11 2h2v6h6v2h-6v12h-2V10H5V8h6V2z"/></svg>`,
+      wave: `<svg class="w-28 h-28 text-sky-400/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4c-4.42 0-8 3.58-8 8 0 1.95.7 3.74 1.87 5.13L4.46 18.55C3.55 17.15 3 15.5 3 13.71c0-4.97 4.03-9 9-9 2.12 0 4.07.74 5.61 1.97l-1.44 1.44C15.02 7.39 13.57 7 12 7c-2.76 0-5 2.24-5 5 0 1.04.32 2.01.87 2.81l-1.42 1.42C5.58 15.05 5 13.6 5 12c0-3.87 3.13-7 7-7 2.05 0 3.9.88 5.19 2.29l1.43-1.43C17.03 4.29 14.65 3.5 12 3.5V4z"/></svg>`,
+      rock: `<svg class="w-24 h-24 text-amber-500/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 9.5L16 3H8L4.5 9.5 2 17l6 4h8l6-4-2.5-7.5zM12 5.5l2.5 4.5h-5L12 5.5z"/></svg>`,
+      sword: `<svg class="w-24 h-24 text-red-500/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M6.92 5H5l9 9 1.42-1.42L6.92 5zm11.78 11.08l-2.83-2.83-1.41 1.41 2.83 2.83-2.12 2.12 1.41 1.41 2.12-2.12 2.12 2.12 1.41-1.41-2.12-2.12 1.41-1.41-2.82-2.82zM14.5 9.5L12 7 3 16l2.5 2.5 9-9z"/></svg>`,
+      hands: `<svg class="w-24 h-24 text-gold-500/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+      pray: `<svg class="w-24 h-24 text-gold-500/10 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`
+    };
+
+    // Render Indicator Dots
+    function renderDots() {
+      dotsContainer.innerHTML = '';
+      cardsData.forEach((card, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-6 bg-gold-400' : 'w-2 bg-white/20 hover:bg-white/40'}`;
+        dot.title = `${idx + 1}번: ${card.category}`;
+        dot.onclick = () => goToCard(idx);
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    // Render Current Card
+    function renderCard(index) {
+      const data = cardsData[index];
+      currentIndex = index;
+
+      // Update header info
+      badgeCategory.textContent = data.badge;
+      cardIndicator.textContent = `${String(index + 1).padStart(2, '0')} / 13`;
+
+      // Update dots
+      renderDots();
+
+      // Render content depending on card type
+      let html = '';
+
+      if (data.type === "COVER") {
+        html = `
+          <!-- Background ambient artwork -->
+          <div class="absolute -right-6 -bottom-6 opacity-30 select-none">
+            ${ICONS.boat}
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-deep via-transparent to-transparent opacity-80 pointer-events-none"></div>
+
+          <!-- Top Meta -->
+          <div class="relative z-10 flex justify-between items-start">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-gold-500/25 text-gold-300 border border-gold-400/40 shadow-sm">
+              ${data.series}
+            </span>
+            <span class="text-[11px] text-slate-400 font-medium">청소년부 찬양팀</span>
+          </div>
+
+          <!-- Center Title Area -->
+          <div class="relative z-10 my-auto text-center px-2">
+            <div class="inline-block mb-3 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-gold-300/90 font-medium tracking-wide">
+              찬양 묵상 스터디 • 1단계
+            </div>
+            
+            <h2 class="font-serif text-3xl sm:text-4xl font-black text-white leading-tight tracking-tight mb-3">
+              ${data.mainTitle.split('—')[0]}
+            </h2>
+            <div class="h-1 w-16 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-4"></div>
+            
+            <p class="text-sm sm:text-base text-gold-300/90 font-serif font-medium mb-5">
+              ${data.subTitle}
+            </p>
+            
+            <p class="text-xs sm:text-sm text-slate-300/90 max-w-xs mx-auto leading-relaxed bg-black/30 backdrop-blur-sm p-3.5 rounded-xl border border-white/10">
+              "${data.description}"
+            </p>
+          </div>
+
+          <!-- Bottom Footer -->
+          <div class="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
+            <span>곡 배경: 「베드로의 고백」</span>
+            <span class="flex items-center gap-1 text-gold-400 font-medium animate-pulse">
+              옆으로 넘기기 →
+            </span>
+          </div>
+        `;
+      } else if (data.type === "GUIDE") {
+        html = `
+          <!-- Background Icon Decoration -->
+          <div class="absolute right-3 top-3 opacity-20 select-none">
+            ${ICONS[data.bgIcon] || ''}
+          </div>
+
+          <!-- Top Guide Badge & Step -->
+          <div class="relative z-10 flex items-center justify-between border-b border-white/10 pb-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-md bg-gold-500/20 text-gold-300 border border-gold-500/30 font-cinzel text-xs font-bold flex items-center justify-center">
+                ${data.guideNumber}
+              </span>
+              <span class="text-xs font-semibold text-gold-400 tracking-wider">GUIDE NOTE</span>
+            </div>
+            <span class="text-[11px] text-slate-400">가이드 6편 중 ${data.guideNumber}</span>
+          </div>
+
+          <!-- Head Copy & Title -->
+          <div class="relative z-10 mb-2">
+            <p class="text-xs sm:text-sm font-semibold text-gold-300/90 font-serif">
+              ${data.headCopy}
+            </p>
+            <h3 class="text-base sm:text-lg font-bold text-white tracking-tight leading-snug mt-0.5">
+              ${data.title}
+            </h3>
+          </div>
+
+          <!-- Body Content (Scrollable if text exceeds height) -->
+          <div class="relative z-10 flex-1 overflow-y-auto custom-scroll pr-1 my-1">
+            <div class="text-slate-300 leading-relaxed space-y-2.5 font-normal text-justify" style="font-size: ${baseFontSize}px;">
+              ${data.content.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('')}
+            </div>
+          </div>
+
+          <!-- Highlight Box: Praise Team Point -->
+          <div class="relative z-10 mt-2 bg-gradient-to-r from-gold-500/15 via-navy-800 to-navy-900 border-l-4 border-gold-400 p-2.5 sm:p-3 rounded-r-xl shadow-md">
+            <div class="flex items-center gap-1.5 text-gold-400 text-[11px] font-bold uppercase tracking-wider mb-1">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+              </svg>
+              찬양팀 묵상 포인트
+            </div>
+            <p class="text-xs sm:text-[13px] text-slate-100 font-medium leading-snug">
+              ${data.point}
+            </p>
+          </div>
+        `;
+      } else if (data.type === "SCRIPTURE") {
+        html = `
+          <!-- Scripture Header -->
+          <div class="relative z-10 flex items-center justify-between border-b border-white/10 pb-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                표준새번역
+              </span>
+              <span class="text-xs font-serif font-bold text-slate-200">${data.passage}</span>
+            </div>
+            <svg class="w-4 h-4 text-gold-400/60" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H8l5-7v4h3l-5 7z"/>
+            </svg>
+          </div>
+
+          <!-- Scripture Title -->
+          <div class="relative z-10 mb-2">
+            <h3 class="text-sm sm:text-base font-bold text-gold-300 font-serif">
+              ${data.theme}
+            </h3>
+          </div>
+
+          <!-- Scripture Body Box (Parchment Styled Dark) -->
+          <div class="relative z-10 flex-1 scripture-card rounded-xl p-3 sm:p-4 border border-gold-500/20 overflow-y-auto custom-scroll">
+            <div class="space-y-3 font-serif text-slate-200" style="font-size: ${baseFontSize}px;">
+              ${data.verses.map(v => {
+                if (v.speaker && !v.highlight) {
+                  return `<div class="text-[11px] font-sans font-bold text-sky-400 mt-2">[${v.speaker}]</div><p class="leading-relaxed opacity-90">${v.text}</p>`;
+                }
+                if (v.highlight) {
+                  return `
+                    <div class="bg-gold-500/10 border-l-2 border-gold-400 pl-3 py-1 my-1 rounded-r-md">
+                      ${v.speaker ? `<span class="block text-[10px] font-sans font-bold text-gold-400 uppercase tracking-wider mb-0.5">${v.speaker}</span>` : ''}
+                      <p class="text-gold-200 font-semibold leading-relaxed">${v.text}</p>
+                    </div>
+                  `;
+                }
+                return `<p class="leading-relaxed text-slate-300 text-justify">${v.text}</p>`;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- Bottom Footer Citation -->
+          <div class="relative z-10 pt-2 text-right text-[10px] text-slate-400 font-mono">
+            대한성서공회 표준새번역
+          </div>
+        `;
+      } else if (data.type === "SHARING") {
+        html = `
+          <!-- Header -->
+          <div class="relative z-10 flex items-center justify-between border-b border-white/10 pb-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-500/20 text-gold-300 border border-gold-500/40">
+                APPLICATION
+              </span>
+              <span class="text-xs font-bold text-white tracking-wide">찬양팀 나눔 & 기도</span>
+            </div>
+            <span class="text-[11px] text-slate-400">마무리 적용</span>
+          </div>
+
+          <!-- Title -->
+          <div class="relative z-10 mb-2">
+            <h3 class="text-base sm:text-lg font-bold text-white font-serif">
+              ${data.title}
+            </h3>
+            <p class="text-xs text-gold-300/90 font-medium">
+              ${data.headCopy}
+            </p>
+          </div>
+
+          <!-- Scripture snippet -->
+          <div class="relative z-10 bg-black/40 border border-white/10 rounded-lg p-2.5 mb-2.5 text-xs text-slate-300 font-serif leading-relaxed">
+            <p class="italic text-gold-200/90">${data.scriptureSnip.replace(/\n/g, '<br>')}</p>
+          </div>
+
+          <!-- 3 Questions & Prayer Box -->
+          <div class="relative z-10 flex-1 overflow-y-auto custom-scroll pr-1 space-y-2">
+            ${data.questions.map((item, qIdx) => `
+              <div class="bg-navy-900/90 border border-white/10 rounded-xl p-2.5 hover:border-gold-500/40 transition">
+                <h4 class="text-xs font-bold ${qIdx === 2 ? 'text-gold-300' : 'text-sky-300'} mb-1 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full ${qIdx === 2 ? 'bg-gold-400' : 'bg-sky-400'}"></span>
+                  ${item.q}
+                </h4>
+                <p class="text-[12px] text-slate-300 leading-snug text-justify">
+                  ${item.desc}
+                </p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    // Navigation Controls
+    function goToCard(idx) {
+      if (idx < 0) idx = 0;
+      if (idx >= cardsData.length) idx = cardsData.length - 1;
+      currentIndex = idx;
+      renderCard(currentIndex);
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        goToCard(currentIndex - 1);
+      } else {
+        showToast("첫 번째 카드입니다.");
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < cardsData.length - 1) {
+        goToCard(currentIndex + 1);
+      } else {
+        showToast("마지막 카드입니다. 전체 모아보기를 확인해보세요!");
+      }
+    }
+
+    // Keyboard Arrow Navigation
+    window.addEventListener('keydown', (e) => {
+      if (gridView.classList.contains('hidden')) {
+        if (e.key === 'ArrowLeft') prevCard();
+        if (e.key === 'ArrowRight') nextCard();
+      }
+    });
+
+    // Touch Swipe Gestures for Mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    container.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const threshold = 40;
+      if (touchEndX < touchStartX - threshold) {
+        // Swiped Left -> Go Next
+        nextCard();
+      } else if (touchEndX > touchStartX + threshold) {
+        // Swiped Right -> Go Prev
+        prevCard();
+      }
+    }
+
+    // Buttons Listeners
+    prevBtn.addEventListener('click', prevCard);
+    nextBtn.addEventListener('click', nextCard);
+
+    // Font Resizing
+    fontPlus.addEventListener('click', () => {
+      if (baseFontSize < 18) {
+        baseFontSize += 1;
+        renderCard(currentIndex);
+      }
+    });
+
+    fontMinus.addEventListener('click', () => {
+      if (baseFontSize > 12) {
+        baseFontSize -= 1;
+        renderCard(currentIndex);
+      }
+    });
+
+    // Grid View Generation
+    function buildGridView() {
+      gridCardsContainer.innerHTML = '';
+      cardsData.forEach((c, idx) => {
+        const item = document.createElement('div');
+        item.className = "group bg-navy-900 border border-white/10 hover:border-gold-400/60 rounded-xl p-4 cursor-pointer transition transform hover:-translate-y-1 shadow-lg flex flex-col justify-between h-48";
+        
+        let previewTitle = c.mainTitle || c.title || c.theme;
+        let previewSub = c.subTitle || c.headCopy || c.passage || '';
+        
+        item.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded ${c.type === 'SCRIPTURE' ? 'bg-sky-500/20 text-sky-300' : 'bg-gold-500/20 text-gold-300'} uppercase font-mono">
+                ${c.badge}
+              </span>
+              <span class="text-[11px] text-slate-500 font-mono">${String(idx + 1).padStart(2, '0')}/13</span>
+            </div>
+            <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-gold-300 transition line-clamp-2">
+              ${previewTitle}
+            </h4>
+            <p class="text-[11px] text-slate-400 mt-1 line-clamp-2">
+              ${previewSub.replace(/[“”"]/g, '')}
+            </p>
+          </div>
+          <div class="text-[10px] text-gold-400/80 font-medium flex items-center justify-end gap-1">
+            보기 →
+          </div>
+        `;
+        item.onclick = () => {
+          goToCard(idx);
+          toggleViews();
+        };
+        gridCardsContainer.appendChild(item);
+      });
+    }
+
+    function toggleViews() {
+      const isGridHidden = gridView.classList.contains('hidden');
+      if (isGridHidden) {
+        buildGridView();
+        sliderView.classList.add('hidden');
+        gridView.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        gridView.classList.add('hidden');
+        sliderView.classList.remove('hidden');
+      }
+    }
+
+    gridToggleBtn.addEventListener('click', toggleViews);
+    closeGridBtn.addEventListener('click', toggleViews);
+
+    // Format Text for Copying to KakaoTalk / SNS
+    function getCardPlainText(data) {
+      const divider = "=========================";
+      let text = `[청소년부 찬양팀 묵상] 베드로의 고백 - 1단계\nCard ${String(data.id + 1).padStart(2, '0')}: ${data.badge}\n${divider}\n`;
+
+      if (data.type === "COVER") {
+        text += `[${data.mainTitle}]\n${data.subTitle}\n\n"${data.description}"\n\n- 찬양 곡: 「베드로의 고백」\n- 청소년부 찬양팀 묵상 1단계`;
+      } else if (data.type === "GUIDE") {
+        text += `★ ${data.title}\n\n${data.headCopy}\n\n${data.content}\n\n💡 [찬양팀 묵상 포인트]\n${data.point}`;
+      } else if (data.type === "SCRIPTURE") {
+        text += `📖 [말씀] ${data.theme}\n(${data.passage})\n\n`;
+        text += data.verses.map(v => (v.speaker ? `[${v.speaker}] ` : '') + v.text).join('\n\n');
+      } else if (data.type === "SHARING") {
+        text += `🙏 ${data.title}\n\n${data.headCopy}\n\n${data.scriptureSnip}\n\n[찬양팀 나눔 & 기도 질문]\n`;
+        text += data.questions.map(q => `${q.q}\n: ${q.desc}`).join('\n\n');
+      }
+
+      return text;
+    }
+
+    // Copy using document.execCommand('copy')
+    copyCardBtn.addEventListener('click', () => {
+      const data = cardsData[currentIndex];
+      const copyText = getCardPlainText(data);
+
+      const textarea = document.createElement('textarea');
+      textarea.value = copyText;
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      textarea.style.top = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast(`Card ${currentIndex + 1} 내용이 복사되었습니다! 단톡방에 붙여넣으세요.`);
+        } else {
+          showToast("복사에 실패했습니다. 수동으로 텍스트를 복사해주세요.");
+        }
+      } catch (err) {
+        showToast("클립보드 접근이 차단되어 있습니다.");
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    });
+
+    // Custom Toast Notification (Never use alert)
+    let toastTimeout = null;
+    function showToast(message) {
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastMsg.textContent = message;
+      toastBox.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+      toastBox.classList.add('opacity-100', 'translate-y-0');
+
+      toastTimeout = setTimeout(() => {
+        toastBox.classList.remove('opacity-100', 'translate-y-0');
+        toastBox.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+      }, 2600);
+    }
+
+    // Initialize on page load
+    window.onload = function() {
+      renderCard(0);
+    };
+  </script>
+</body>
+</html>
