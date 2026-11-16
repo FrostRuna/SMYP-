@@ -169,19 +169,6 @@
         <!-- Injected via JavaScript -->
       </div>
 
-      <!-- Navigation Overlay Arrows -->
-      <button id="prevBtn" aria-label="이전 카드" class="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-black/75 backdrop-blur-md border border-white/15 text-white/80 hover:text-white flex items-center justify-center transition transform active:scale-90 hover:scale-105 z-20">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      <button id="nextBtn" aria-label="다음 카드" class="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-black/75 backdrop-blur-md border border-white/15 text-white/80 hover:text-white flex items-center justify-center transition transform active:scale-90 hover:scale-105 z-20">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
     </div>
 
     <!-- Dots & Guide Footnote -->
@@ -190,14 +177,8 @@
       <div id="dotsContainer" class="flex items-center space-x-1.5 overflow-x-auto py-1 max-w-full px-2">
         <!-- Injected dots -->
       </div>
-      <div class="flex items-center gap-3 text-[11px] text-slate-500">
-        <span class="flex items-center gap-1">
-          <kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px]">←</kbd>
-          <kbd class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px]">→</kbd>
-          방향키 이동
-        </span>
-        <span>•</span>
-        <span>화면 터치 스와이프 지원</span>
+      <div class="text-[11px] sm:text-xs text-slate-400 text-center">
+        <span>좌우로 스와이프하여 넘기기 · 또는 하단 인디케이터/키보드 방향키</span>
       </div>
     </div>
 
@@ -451,8 +432,6 @@
     const badgeCategory = document.getElementById('badgeCategory');
     const cardIndicator = document.getElementById('cardIndicator');
     const dotsContainer = document.getElementById('dotsContainer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
     const gridToggleBtn = document.getElementById('gridToggleBtn');
     const closeGridBtn = document.getElementById('closeGridBtn');
     const sliderView = document.getElementById('sliderView');
@@ -801,10 +780,6 @@
         prevCard();
       }
     }
-
-    // Buttons
-    prevBtn.addEventListener('click', prevCard);
-    nextBtn.addEventListener('click', nextCard);
 
     // Font Resizing
     fontPlus.addEventListener('click', () => {
